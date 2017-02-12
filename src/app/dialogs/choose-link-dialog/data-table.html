@@ -1,0 +1,46 @@
+<div style=" width: 100%;height: 100%;">
+  <data-table id="films-grid"
+              headerTitle="OPM Links"
+              [items]="films"
+              [itemCount]="filmCount"
+              (reload)="reloadFilms($event)"
+
+              [limit]="3"
+              [sortBy]="'rating'"
+              [sortAsc]="false"
+
+              [selectColumn]="true"
+              [multiSelect]="false"
+              [substituteRows]="true"
+             [expandableRows]="true"
+              [translations]="translations"
+              [indexColumnHeader]="'index'"
+              [selectOnRowClick]="true"
+  >
+    <template #dataTableExpand let-item="item">
+      <div [textContent]="item.description" style="padding: 10px; color: gray"></div>
+    </template>
+    <data-table-column
+      [property]="'title'"
+      [header]="'Symbol'"
+      [sortable]="true">
+    </data-table-column>
+    <data-table-column
+      [property]="'year'"
+      [header]="'Name'"
+      [sortable]="true">
+    </data-table-column>
+    <data-table-column
+      [property]="'rating'"
+      [header]="'OPL sentence'"
+      [sortable]="true"
+      [cellColors]="cellColor">
+    </data-table-column>
+
+  </data-table>
+  <div style="margin-top: 20px">
+    <b>Selected:</b>
+    <span *ngIf="filmsTable.selectedRow == null"><i>No item selected</i></span>
+    <span [textContent]="filmsTable.selectedRow && filmsTable.selectedRow.item.title"></span>
+  </div>
+</div>

@@ -1,10 +1,14 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef, EventEmitter} from '@angular/core';
 import { GraphService } from '../services/graph.service';
 import { haloConfig } from '../../config/halo.config';
 import { toolbarConfig } from '../../config/toolbar.config';
 import { opmShapes } from '../../config/opm-shapes.config';
-import { MdDialog } from '@angular/material';
+import {MdDialog, MdDialogConfig} from '@angular/material';
 import { ChooseLinkDialogComponent } from '../../dialogs/choose-link-dialog/choose-link-dialog.component';
+import {publicDecrypt} from "crypto";
+import {templateVisitAll} from "@angular/compiler";
+
+import {TestDialogComponent} from "../../dialogs/testdialog/testdialog";
 
 const joint = require('rappid');
 
@@ -13,17 +17,22 @@ const $ = require('jquery')
 const _ = require('lodash')
 
 @Component({
-  selector: 'opcloud-rappid-main',
+
   template: `
     <div class="rappid-main rappid" #rappidContainer>
       <!--<opcloud-rappid-toolbar></opcloud-rappid-toolbar>-->
       <opcloud-rappid-stencil [graph]="graph" [paper]="paper" [paperScroller]="paperScroller"></opcloud-rappid-stencil>
       <opcloud-rappid-paper [paper]="paper" [paperScroller]="paperScroller"></opcloud-rappid-paper>
       <opcloud-rappid-inspector [cell]="cell"></opcloud-rappid-inspector>
+ 
       <div class="statusbar-container"></div>
     </div>
   `,
-  styleUrls: ['./rappid-main.component.css']
+  selector: 'opcloud-rappid-main',
+  styleUrls: ['./rappid-main.component.css'],
+
+
+
 })
 export class RappidMainComponent implements OnInit {
   graph = null;
@@ -33,16 +42,20 @@ export class RappidMainComponent implements OnInit {
   private snaplines;
   private paperScroller;
   private keyboard;
+
   private clipboard;
   private selection;
   private navigator;
   private toolbar;
+
+
 
   @ViewChild('rappidContainer', { read: ViewContainerRef }) rappidContainer;
 
   constructor(graphService:GraphService, private _dialog: MdDialog) {
     this.graph = graphService.getGraph();
   }
+
 
   ngOnInit() {
     this.initializePaper();
@@ -60,23 +73,29 @@ export class RappidMainComponent implements OnInit {
       if (cell.attributes.type === 'opm.Link') {
         cell.on('change:target change:source', (link) => {
           if (link.attributes.source.id && link.attributes.target.id) {
+
+
             let dialogRef = this._dialog.open(ChooseLinkDialogComponent, {viewContainerRef: this.rappidContainer});
             dialogRef.componentInstance.newLink = link;
             dialogRef.componentInstance.linkSource = link.getSourceElement();
             dialogRef.componentInstance.linkTarget = link.getTargetElement();
-
+            dialogRef.componentInstance.check_links();
             dialogRef.afterClosed().subscribe(result => {
               if (!!result) {
                 console.log('chosen link: ', result);
               }
             });
+
+
           }
         });
       }
     });
   }
 
-  initializePaper() {
+
+
+  initializePaper(){
 
     this.graph.on('add', (cell, collection, opt) => {
       if (opt.stencil) {
@@ -108,10 +127,6 @@ export class RappidMainComponent implements OnInit {
     /// $('.paper-container').append(paperScroller.el);
     paperScroller.render().center();
   }
-
-
-
-
 
   initializeKeyboardShortcuts() {
 
@@ -300,12 +315,12 @@ export class RappidMainComponent implements OnInit {
   changeSnapLines(checked) {
 
     /*if (checked) {
-      this.snaplines.startListening();
-      this.stencil.options.snaplines = this.snaplines;
-    } else {
-      this.snaplines.stopListening();
-      this.stencil.options.snaplines = null;
-    }*/
+     this.snaplines.startListening();
+     this.stencil.options.snaplines = this.snaplines;
+     } else {
+     this.snaplines.stopListening();
+     this.stencil.options.snaplines = null;
+     }*/
   }
 
 

@@ -11,7 +11,18 @@ import { MaterialModule } from '@angular/material';
 import { SaveModelDialogComponent } from './dialogs/save-model-dialog/save-model-dialog.component';
 import { LoadModelDialogComponent } from './dialogs/load-model-dialog/load-model-dialog.component';
 import { ChooseLinkDialogComponent } from './dialogs/choose-link-dialog/choose-link-dialog.component';
+import {TestDialogComponent} from './dialogs/testdialog/testdialog';
 import { OplWidgetComponent } from './opl-widget/opl-widget.component';
+import {LinkValidationService} from './dialogs/choose-link-dialog/link-API.service'
+// resizble import component
+import {ResizableModule} from 'angular2-resizable';
+import { DataTableModule } from 'angular-2-data-table';
+import { DataTableDemo } from './dialogs/choose-link-dialog/data-table';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,21 +31,32 @@ import { OplWidgetComponent } from './opl-widget/opl-widget.component';
     SaveModelDialogComponent,
     LoadModelDialogComponent,
     ChooseLinkDialogComponent,
-    OplWidgetComponent
+    TestDialogComponent,
+    OplWidgetComponent,
+    DataTableDemo
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RappidModule,
+    ResizableModule,
+    DataTableModule,
     MaterialModule.forRoot()
   ],
   entryComponents: [
     SaveModelDialogComponent,
     LoadModelDialogComponent,
-    ChooseLinkDialogComponent
+    ChooseLinkDialogComponent,
+    TestDialogComponent,
+
   ],
-  providers: [ModelStorageService],
+  providers: [ModelStorageService,LinkValidationService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+}
+

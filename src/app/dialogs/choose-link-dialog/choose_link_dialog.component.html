@@ -1,0 +1,50 @@
+
+
+<div class="dialog-title">
+  <span class="caption-subject font-green-sharp sbold">Choose the link type</span>
+    </div>
+
+
+
+<!--
+    <ul>
+
+      <li >
+        {{item}}
+      </li>
+
+      <li *ngFor="let item of opl_sentences">
+        {{item}}
+      </li>
+
+    </ul>-->
+  <!-- <ul>
+     <li *ngFor="let link of opmLinks"
+         (click)="select(link)"
+         [ngClass]="link === selected ? 'selected' : ''">{{ link.name }}</li>
+   </ul>-->
+
+
+   <md-list>
+     <md-list-item  class="mt-list-item" *ngFor="let item of serv">
+
+       <div  md-list-avatar class='icon {{item.icon}} '></div>
+       <h3 md-line  class="uppercase bold"> {{item.name}} </h3>
+       <p md-line>
+         <span> {{item.opl}}</span>
+       </p>
+       <md-divider></md-divider>
+     </md-list-item>
+
+   </md-list>
+
+
+<div style="padding: 25px;">
+  <md-dialog-actions >
+      <button md-button (click)="dialogRef.close(selected)">SAVE</button>
+
+  </md-dialog-actions>
+
+</div>
+
+

@@ -1,0 +1,108 @@
+
+
+
+<div id='popup' [style.top.px]='y'
+     [style.left.px]='x'
+     [style.width.px]='width'
+     [style.height.px]='height'
+     (mousedown)='onWindowPress($event)'
+     (mousemove)='onWindowDrag($event)'>
+  <div (mousedown)='onCornerClick($event, topLeftResize)' id='popup-top-left-resize' class='popup-corner-resize'></div>
+  <div (mousedown)='onCornerClick($event, topRightResize)' id='popup-top-right-resize' class='popup-corner-resize'></div>
+  <div (mousedown)='onCornerClick($event, bottomLeftResize)' id='popup-bottom-left-resize' class='popup-corner-resize'></div>
+  <div (mousedown)='onCornerClick($event, bottomRightResize)' id='popup-bottom-right-resize' class='popup-corner-resize'></div>
+
+
+ <!-- <table>
+
+    <thead>
+    </thead>
+    <tbody>
+    <tr>
+      <td><img src="1.png"></td>
+      <td> uni-direct(nulltag)</td>
+      <td>opl sentence ...</td>
+    </tr>
+    <tr>
+      <td><img src="2.png"></td>
+      <td> uni-direct(tag)</td>
+      <td>opl sentence ...</td>
+    </tr>
+    <tr>
+      <td><img src="3.png"></td>
+      <td> Bi-direct(nulltag)</td>
+      <td>opl sentence ...</td>
+
+    </tr>
+    </tbody>
+
+  </table>-->
+
+<!--  <style type="text/css">
+    table.hovertable {
+      font-family: verdana,arial,sans-serif;
+      font-size:11px;
+      color:#333333;
+      border-width: 1px;
+      border-color: #999999;
+      border-collapse: collapse;
+    }
+    table.hovertable th {
+      background-color:#c3dde0;
+
+      padding: 8px;
+
+
+    }
+    table.hovertable tr {
+      background-color:#d4e3e5;
+    }
+    table.hovertable td {
+      border-bottom:  1px;
+      padding: 8px;
+
+    }
+  </style> -->
+  <!-- Table goes in the document BODY
+  <table class="hovertable" >
+    <tr>
+      <th>Link Symbol</th><th>Link Name</th><th>OPL Sentence</th>
+    </tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+      <td><img style="width: 70% ; height: 50%;"src="1.png"></td><td>Agent</td><td>opl sentence ...</td>
+    </tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+      <td><img style="width: 70% ; height: 50%;"  src="2.png"></td><td>Condition Instrument</td><td>opl sentence ...</td>
+    </tr>
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+      <td><img style="width: 70% ; height: 50%;" src="3.png"></td><td>Invocation</td><td>opl sentence ...</td>
+    </tr>
+  </table>
+  <br>-->
+
+<!--
+  <table class="table table-hover">
+    <tbody>
+    <tr *ngFor="let td of data; let i = index"
+        (mousedown)="onSelectionStart(i)"
+        (mouseenter)="onSelection(i)"
+        (mouseup)="onSelectionEnd()"
+        [class.selected]="td">
+      <td>row {{ i }}</td>
+      <td>selected: {{ td }}</td>
+    </tr>
+    </tbody>
+  </table>-->
+
+  <md-list >
+
+    <md-list  cl *ngFor="let message of popup_data">
+      <img md-list-avatar [src]="popup_data.image" alt="Image of {{popup_data.from}}">
+      <h4 md-line>{{popup_data.from}}</h4>
+      <p md-line> {{popup_data.subject}} </p>
+      <p md-line class="demo-secondary-text">{{popup_data.message}} </p>
+    </md-list>
+  </md-list>
+
+</div>
+

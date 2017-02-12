@@ -38,5 +38,4 @@ export class LoadModelDialogComponent implements OnInit {
   select(model) {
     this.selected = model;
   }
-
 }

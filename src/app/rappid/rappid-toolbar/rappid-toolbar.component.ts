@@ -20,7 +20,7 @@ export class RappidToolbarComponent implements OnInit {
     this.graph = this.graphService.getGraph();
   }
 
-  saveModel() {
+    saveModel() {
     if (!this.modelName) {
       return this.saveModelAs();
     }

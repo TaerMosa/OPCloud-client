@@ -1,3 +1,62 @@
-.selected {
-  background: lightskyblue;
+
+@charset "utf-8";
+/* CSS Document */
+.icon { background: url('assets/img/icon.png') no-repeat top left; width: 74px; height: 24px;  }
+.icon.bidrectional-relation { background-position: 0 0; width: 73px; }
+.icon.unidirectional-relation { background-position: 0 -34px; width: 73px; }
+.icon.exception { background-position: 0 -68px; }
+.icon.agent{ background-position: 0 -102px; }
+.icon.consumption-event { background-position: 0 -136px; width: 73px; }
+.icon.exhibition-characterization { background-position: 0 -170px; }
+.icon.aggregation-participation { background-position: 0 -204px; }
+.icon.effect { background-position: 0 -238px; width: 73px; }
+.icon.generalization-specialization { background-position: 0 -272px; }
+.icon.instrument-condition { background-position: 0 -306px; }
+.icon.instrument-event { background-position: 0 -340px; }
+.icon.instrument { background-position: 0 -374px; }
+.icon.invocation { background-position: 0 -408px; }
+.icon.result { background-position: 0 -442px; width: 73px; }
+.icon.classification-instantiations { background-position: 0 -476px; }
+
+
+.caption-subject {
+  font-size: 16px;
+}
+
+.dialog-title::before {
+  content: " ";
+  display: table;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+
+
+.bold {
+  font-weight: 700 !important;
+}
+
+
+
+.dialog-title {
+ align:center;
+  border-bottom: 2px solid #eef1f5;
+}
+.font-green-sharp {
+  color: #2ab4c0 !important;
+}
+.sbold {
+  font-weight: 600 !important;
+}
+
+
+.mt-list-item {
+  transition: all 0.3s ease 0s;
+  border-bottom-color: #4a4d6e !important;
+}
+.mt-list-item:hover {
+  background:gainsboro;
+  cursor: pointer;
 }

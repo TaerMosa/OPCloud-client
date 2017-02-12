@@ -6,3 +6,29 @@
   right: 0;
   box-sizing: border-box;
 }
+
+
+table {
+  width:100%;
+  height: 100%;
+
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 2px;
+  text-align:left;
+  font-size: small;
+  font-style: italic;
+}
+
+tr:hover {
+  background-color: #8b7eff;
+}
